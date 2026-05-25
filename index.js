@@ -1,5 +1,14 @@
 const { Client, GatewayIntentBits } = require('discord.js');
-const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const express = require('express');
+const app = express();
+
+// ده سيرفر صغير عشان الرندر يفضل مشغل البوت
+app.get('/', (req, res) => res.send('البوت شغال!'));
+app.listen(3000);
+
+const client = new Client({ 
+    intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] 
+});
 
 client.on('ready', () => {
   console.log(`البوت شغال: ${client.user.tag}`);
